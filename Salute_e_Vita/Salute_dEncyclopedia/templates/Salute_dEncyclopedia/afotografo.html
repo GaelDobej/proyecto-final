@@ -1,0 +1,124 @@
+{% extends "Salute_dEncyclopedia/base.html" %}
+{% load static %}
+
+{% block titulo %}
+
+<h1>Fotografo</h1>
+
+{% endblock titulo %}
+
+{% block contenido %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtros</title>
+    <style>
+        /* Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #filters-panel {
+            position: fixed;
+            top: 0;
+            right: 0; /* Set it to 0 to make it permanently open */
+            width: 300px;
+            height: 100vh;
+            background-color: #000000;
+            box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        #filters-content {
+            padding: 20px;
+        }
+        #close-filters-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #777;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="filters-panel">
+        <a href="#" id="close-filters-button"></a>
+        <div id="filters-content">
+            <h2>Opciones de Filtro</h2>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Encyclopedia' %}" style="color: rgb(86, 116, 113); display: block;
+            text-decoration: none; font-size: 25px;">Todos</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Escultor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Escultores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Pintor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Pintores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Escritor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Escritores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Ilustrador' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Ilustradores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Musico' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Musicos</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Grabador' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Grabadores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Animador' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Animadores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Actor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Actores</a>
+      
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Cineasta' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Cineasta</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<table>
+    <tr>
+        <td width="500"><h1>Lista de Fotografos</h1></td>
+        <td>
+            <a  
+            href="{% url 'Salute_dEncyclopedia:create_fotografo'%}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+<table class="table table-success table-striped">
+    <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Nacimiento</th>
+        <th>Nacionalidad</th>
+        <th>Acciones</th>
+    </tr>
+{% for f in Fotografos %}
+    <tr>
+        <td>{{ f.id }}</td>
+        <td>{{ f.nombre }}</td>
+        <td>{{ f.apellido }}</td>
+        <td>{{ f.nacimiento }}</td>
+        <td>{{ f.nacionalidad }}</td>
+        <td>
+            <a 
+            href="{% url 'Salute_dEncyclopedia:update_fotografo' f.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+            </a>
+            <a 
+                href="{% url 'Salute_dEncyclopedia:delete_fotografo' f.id %}"
+                class="btn btn-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-trash fa-sm" title="Delete"></i>
+                </a>
+        </td> 
+    </tr>
+    </tr>
+    
+{% endfor %}
+</table>
+{% endblock contenido %}

@@ -1,0 +1,187 @@
+{% extends "Salute_dEncyclopedia/base.html" %}
+{% load static %}
+
+{% block contenido %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtros</title>
+    <style>
+        /* Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #filters-panel {
+            position: fixed;
+            top: 0;
+            right: 0; /* Set it to 0 to make it permanently open */
+            width: 300px;
+            height: 100vh;
+            background-color: #000000;
+            box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        #filters-content {
+            padding: 20px;
+        }
+        #close-filters-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #777;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="filters-panel">
+        <a href="#" id="close-filters-button"></a>
+        <div id="filters-content">
+            <h2>Opciones de Filtro</h2>
+            <!-- Aquí puedes añadir tus opciones de filtro -->
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Escultor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Escultores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Pintor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Pintores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Escritor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Escritores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Ilustrador' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Ilustradores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Musico' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Musicos</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Grabador' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Grabadores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Animador' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Animadores</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Fotografo' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Fotografo</a>
+            <a class="link" href="{% url 'Salute_dEncyclopedia:Cineasta' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Cineasta</a>
+             <a class="link" href="{% url 'Salute_dEncyclopedia:Actor' %}" style="color: rgb(86, 116, 113); display: block;
+             text-decoration: none; font-size: 20px;">Actores</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<h1>Artistas</h1>
+<table class="table table-success table-striped">
+   
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nacimiento</th>
+            <th>Profesion</th>
+            <th>Nacionalidad</th>
+        </tr>
+    </thead>
+
+    <tbody>
+{% for musico in aMusicos %}
+        <tr>
+            <td>{{ musico.nombre }}</td>
+            <td>{{ musico.apellido }}</td>
+            <td>{{ musico.nacimiento }}</td>
+            <td>{{ musico.profesion }}</td>
+            <td>{{ musico.nacionalidad }}</td>
+        </tr>
+{% endfor %}
+{% for pintor in aPintores %}
+        <tr>
+            <td>{{ pintor.nombre }}</td>
+            <td>{{ pintor.apellido }}</td>
+            <td>{{ pintor.nacimiento }}</td>
+            <td>{{ pintor.profesion }}</td>
+            <td>{{ pintor.nacionalidad }}</td>
+            
+        </tr>
+            
+{% endfor %}
+{% for escritor in aEscritores %}
+        <tr>
+            <td>{{ escritor.nombre }}</td>
+            <td>{{ escritor.apellido }}</td>
+            <td>{{ escritor.nacimiento }}</td>
+            <td>{{ escritor.profesion }}</td>
+            <td>{{ escritor.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for actor in aActores %}
+        <tr>
+            <td>{{ actor.nombre }}</td>
+            <td>{{ actor.apellido }}</td>
+            <td>{{ actor.nacimiento }}</td>
+            <td>{{ actor.profesion }}</td>
+            <td>{{ actor.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for cineasta in aCineastas %}
+        <tr>
+            <td>{{ cineasta.nombre }}</td>
+            <td>{{ cineasta.apellido }}</td>
+            <td>{{ cineasta.nacimiento }}</td>
+            <td>{{ cineasta.profesion }}</td>
+            <td>{{ cineasta.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for fotografo in aFotografos %}
+        <tr>
+            <td>{{ fotografo.nombre }}</td>
+            <td>{{ fotografo.apellido }}</td>
+            <td>{{ fotografo.nacimiento }}</td>
+            <td>{{ fotografo.profesion }}</td>
+            <td>{{ fotografo.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for animador in aAnimadores %}
+        <tr>
+            <td>{{ animador.nombre }}</td>
+            <td>{{ animador.apellido }}</td>
+            <td>{{ animador.nacimiento }}</td>
+            <td>{{ animador.profesion }}</td>
+            <td>{{ animador.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for grabador in aGrabadores %}
+        <tr>
+            <td>{{ grabador.nombre }}</td>
+            <td>{{ grabador.apellido }}</td>
+            <td>{{ grabador.nacimiento }}</td>
+            <td>{{ grabador.profesion }}</td>
+            <td>{{ grabador.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for ilustrador in aIlustradores %}
+        <tr>
+            <td>{{ ilustrador.nombre }}</td>
+            <td>{{ ilustrador.apellido }}</td>
+            <td>{{ ilustrador.nacimiento }}</td>
+            <td>{{ ilustrador.profesion }}</td>
+            <td>{{ ilustrador.nacionalidad }}</td>
+            
+        </tr>
+{% endfor %}
+{% for escultor in aEscultores %}
+        <tr>
+            <td>{{ escultor.nombre }}</td>
+            <td>{{ escultor.apellido }}</td>
+            <td>{{ escultor.nacimiento }}</td>
+            <td>{{ escultor.profesion }}</td>
+            <td>{{ escultor.nacionalidad }}</td>
+           
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

@@ -1,0 +1,16 @@
+{% extends "Salute_dArtist/z-base.html" %}
+{% load static %}
+
+{% block titulo %} <h1>Pintor</h1> {% endblock titulo %}
+
+{% block contenido2 %}
+    <h2>Agregar servicio</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Siguiente">  
+        </form>
+
+{% endblock contenido2 %}

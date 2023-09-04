@@ -1,0 +1,32 @@
+{% extends "Salute_dArtist/z-base.html" %}
+{% load static %}
+
+{% block titulo %}
+
+<h1 style="font-size: 5rem; color: black; font-family: 'Cormorant Unicase', sans-serif;">Servicios</h1>
+
+{% endblock titulo %}
+
+{% block contenido %}
+    
+
+    <table>
+        <tr>
+            <h3 style="font-size: 3rem; color: black; font-family: 'Cormorant Unicase', sans-serif;">Lista de servicios</h3>
+        </tr>
+    </table> 
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>titulo</th>
+            <th>descripcion</th>
+            <th>contacto</th>
+        </tr>
+    {% for servicios in ServiciosIl %}
+        <tr>
+            <td>{{ servicios.titulo }}</td>
+            <td>{{ servicios.descripcion }}</td>
+            <td><a href="{{ servicios.contacto }}">{{ servicios.contacto }}</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endblock contenido %}

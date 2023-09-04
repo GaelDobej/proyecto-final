@@ -1,0 +1,102 @@
+{% extends "Salute_dArtist/z-base.html" %}
+{% load static %}
+
+{% block titulo %}
+
+<h1 style="font-size: 5rem; color: black; font-family: 'Cormorant Unicase', sans-serif;">Musico</h1>
+
+{% endblock titulo %}
+
+{% block contenido %}
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtros</title>
+    <style>
+        /* Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #filters-panel {
+            position: fixed;
+            top: 0;
+            right: 0; /* Set it to 0 to make it permanently open */
+            width: 500px;
+            height: 280px;
+            background-color: #000000;
+            box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        #filters-content {
+            padding: 20px;
+        }
+        #close-filters-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #777;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="filters-panel">
+        <a href="#" id="close-filters-button"></a>
+        <div id="filters-content">
+            <h2>Vender</h2>
+            <a class="link" href="{% url 'Salute_dArtist:musico_agregar_servicio' %}" style="color: rgb(86, 116, 113); display: block;
+            text-decoration: none; font-size: 25px;">Agregar servicios</a>
+        </div>
+    </div>
+</body>
+
+
+<table>
+    <tr>
+        <h3 style="font-size: 3rem; color: black; font-family: 'Cormorant Unicase', sans-serif;">Lista de musicos</h3>
+        <td>
+            <a 
+            href="{% url 'Salute_dArtist:create_musico' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"></i>
+            </a>
+        </td>
+    </tr>
+</table> 
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nacionalidad</th>
+            <th>portfolio</th>
+            <th>acciones</th>
+        </tr>
+    {% for musico in musico_list %}
+        <tr>
+            <td>{{ musico.id }}</td>
+            <td>{{ musico.nombre }}</td>
+            <td>{{ musico.apellido }}</td>
+            <td>{{ musico.nacionalidad }}</td>
+            <td><a href="{{ musico.portfolio }}">{{ musico.portfolio }}</a></td>
+                <td>
+                    <a 
+                    href="{% url 'Salute_dArtist:update_musico' musico.id %}"
+                    class="btn btn-primary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a  
+                    href="{% url 'Salute_dArtist:delete_musico' musico.id %}"
+                    class="btn btn-primary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    ><i class="fa fa-trash fa-sm" title="Delete"></i>
+                    </a>
+                </td> 
+        </tr>
+    {% endfor %}
+    </table>
+    {% endblock contenido %}

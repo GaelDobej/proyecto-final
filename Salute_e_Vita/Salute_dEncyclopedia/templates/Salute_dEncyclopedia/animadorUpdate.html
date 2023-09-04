@@ -1,0 +1,15 @@
+{% extends "Salute_dEncyclopedia/base.html" %}
+{% load static %}
+
+{% block titulo %} <h1>Animador</h1> {% endblock titulo %}
+
+{% block contenido2 %}
+    <h2>Editar animador</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Siguiente">  
+        </form>
+{% endblock contenido2 %}
